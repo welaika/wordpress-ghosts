@@ -75,10 +75,12 @@ function disable_password_reset_for_ghosts($allow, $user_id) {
 add_filter( 'allow_password_reset', 'disable_password_reset_for_ghosts', 10, 2 );
 
 // Disable password edit for ghosts
-function disable_password_edit_for_ghosts($allow, $profileuser) {
-  $ghosts_id = get_ghosts_id();
-  $allow = in_array($profileuser->id, $ghosts_id) ? false : true;
-  return $allow;
+function disable_password_edit_for_ghosts($allow, $profileuser = NULL) {
+  if (!is_null($profileuser)){
+    $ghosts_id = get_ghosts_id();
+    $allow = in_array($profileuser->id, $ghosts_id) ? false : true;
+    return $allow;
+  }
 }
 
 // WP action: disable password edit
