@@ -4,10 +4,10 @@ function get_ghosts(){
   // Array of Users (Ghosts) to create and hide it with relative WP role, email and password.
   return array(
     '0' => array(
-      'welaika_ghost', // username
+      'username', // username
       'administrator', // role
-      'ghost@welaika.com', // email
-      'K-Z)k@qN92-Q<-*$')  // password
+      'user@email.com', // email
+      'password')  // password
     );
 }
 
